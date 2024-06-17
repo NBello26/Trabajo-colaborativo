@@ -1,1 +1,0 @@
-import Funciones_Nico as funcion
