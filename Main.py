@@ -28,9 +28,9 @@ while flagmenu:
     elif opcion == "3":
         print("\nImprimiendo planilla...\n");
         funcion.imprimir_planilla(trabajadores);
-        print("\nPlanilla credada exitosamente.\n");
+        print("\nPlanilla credada exitosamente, puede revisarla en el archivo Planilla_Sueldos.txt creado.\n");
     elif opcion == "4":
         print("\nSaliendo del programa, nos vemos en otra ocación");
-        flagmenu == False;
+        flagmenu = False;
     else:
         print("\nOpción ingresada incorrecta. Intentelo nuevamente.\n");
