@@ -13,29 +13,41 @@ def login(usuarios):
 
 def registrar_trabajador(trabajadores,cargos):
     print("Registrar Trabajador")
+    contador = 0;
     flag =True
+    flagsueldo = True;
     while flag:
         nombre_apellido = input("Ingrese su Nombre y Apellido:")
-        cargo = input("Ingrese su cargo (CEO, Desarrollador o Analista de Datos):")
-        if cargo not in cargos:
-            print("Cargo no válido.")
-        else:
+        cargo = input("Ingrese su cargo (CEO, Desarrollador o Analista de Datos):");
+        for i in cargos:
+            if cargo.upper() == i.upper():
+                cargo = i;
+                contador += 1;
+        if contador == 1:
             flag = False;
-    sueldobruto = float(input("Ingrese su sueldo bruto:"))
-    #Calcular descuentos
-    desc_salud = sueldobruto * 0.07;
-    desc_afp = sueldobruto * 0.12;
-    desc_total = desc_afp + desc_salud;
-    sueldo_liquido = sueldobruto - desc_total;
-    #Registrar Trabajadores en la coleccion
-    trabajadores.append(
-        [nombre_apellido,
-        cargo,
-        sueldobruto,
-        desc_salud,
-        desc_afp,
-        sueldo_liquido]
-    )
+        else:
+            print("Cargo no valido. Intentelo nuevamente.")
+    while flagsueldo:
+        try:
+            sueldobruto = float(input("Ingrese su sueldo bruto:"));
+        except:
+            print("Ingrese el sueldo correctamente. Intentelo nuevamente.");
+        else:  
+            flagsueldo = False; 
+            #Calcular descuentos
+            desc_salud = sueldobruto * 0.07;
+            desc_afp = sueldobruto * 0.12;
+            desc_total = desc_afp + desc_salud;
+            sueldo_liquido = sueldobruto - desc_total;
+            #Registrar Trabajadores en la coleccion
+            trabajadores.append(
+                [nombre_apellido,
+                cargo,
+                sueldobruto,
+                desc_salud,
+                desc_afp,
+                sueldo_liquido]
+            )
     return trabajadores
 
 def imprimir_planilla(lista):
@@ -59,11 +71,12 @@ def imprimir_sueldos(lista,cargo):
             if cargo == "TODOS":
                 archivo.write(f"{i[0]} - {i[1]} - {i[2]} - {i[3]} - {i[4]}\n");
             else:
-                if cargo.upper() == i[1]:
+                if cargo.upper() == i[1].upper():
                     archivo.write(f"{i[0]} - {i[1]} - {i[2]} - {i[3]} - {i[4]}\n");
 
 def listar_trabajadores(lista):
     #Listar todos los trabajadores
     lista1 = ["Trabajador","Cargo","Sueldo Bruto","Desc. Salud", "Desc. AFP", "Líquido a pagar"]
     print(lista1)
-    print(lista)
+    for i in lista:
+        print(i)
