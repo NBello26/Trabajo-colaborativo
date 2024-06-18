@@ -28,6 +28,7 @@ while flagmenu:
     elif opcion == "3":
         print("\nImprimiendo planilla...\n");
         funcion.imprimir_planilla(trabajadores);
+        print("\nPlanilla credada exitosamente.\n");
     elif opcion == "4":
         print("\nSaliendo del programa, nos vemos en otra ocación");
         flagmenu == False;

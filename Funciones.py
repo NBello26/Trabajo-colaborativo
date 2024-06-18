@@ -48,6 +48,7 @@ def registrar_trabajador(trabajadores,cargos):
                 desc_afp,
                 sueldo_liquido]
             )
+    print(F"\nTrabajador {nombre_apellido} creado exitosamente.\n");
     return trabajadores
 
 def imprimir_planilla(lista):
